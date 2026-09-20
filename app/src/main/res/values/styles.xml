@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Input Styles -->
+    <style name="XHSTextInputLayout">
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/xhs_red</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/xhs_red</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="hintTextAppearance">@style/XHSHintTextAppearance</item>
+        <item name="shapeAppearance">@style/XHSRoundedShape</item>
+        <item name="shapeAppearanceOverlay">@style/XHSTextInputShapeOverlay</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+    </style>
+    
+    <style name="XHSHintTextAppearance">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/xhs_red</item>
+    </style>
+    
+    <style name="XHSTextInputShapeOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    
+    <style name="XHSTextInputEditText">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:padding">@dimen/spacing_16</item>
+    </style>
+    
+    <!-- Button Styles -->
+    <style name="XHSButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textStyle">bold</item>
+        <item name="shapeAppearance">@style/XHSRoundedShape</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    
+    <style name="XHSButton.Outlined">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/xhs_red</item>
+        <item name="strokeColor">@color/xhs_red</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    
+    <!-- Card Styles -->
+    <style name="XHSCard">
+        <item name="cardCornerRadius">@dimen/corner_radius_16</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+    
+    <style name="XHSCard.Small">
+        <item name="cardCornerRadius">@dimen/corner_radius_8</item>
+    </style>
+    
+    <!-- Shape Styles -->
+    <style name="XHSRoundedShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    
+    <style name="XHSRoundedShape.Large">
+        <item name="cornerSize">16dp</item>
+    </style>
+    
+    <style name="XHSRoundedShape.Small">
+        <item name="cornerSize">3dp</item>
+    </style>
+    
+    <!-- Text Styles -->
+    <style name="XHSText">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <style name="XHSText.Title">
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="XHSText.Subtitle">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <style name="XHSText.Body">
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+    
+    <style name="XHSText.Caption">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+    
+    <style name="XHSText.Link">
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/xhs_red</item>
+    </style>
+    
+    <!-- Top Bar Styles -->
+    <style name="XHSTopBar">
+        <item name="android:layout_height">@dimen/top_bar_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingStart">@dimen/top_bar_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/top_bar_padding_horizontal</item>
+    </style>
+    
+    <!-- Bottom Bar Styles -->
+    <style name="XHSBottomBar">
+        <item name="android:layout_height">@dimen/bottom_bar_height</item>
+        <item name="android:background">@color/white</item>
+    </style>
+</resources>
+

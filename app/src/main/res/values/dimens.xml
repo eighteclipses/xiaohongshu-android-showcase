@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common Spacing -->
+    <dimen name="spacing_4">4dp</dimen>
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_32">32dp</dimen>
+    <dimen name="spacing_40">40dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
+    <dimen name="spacing_64">64dp</dimen>
+    
+    <!-- Text Sizes -->
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_28">28sp</dimen>
+    
+    <!-- Component Sizes -->
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="input_field_height">48dp</dimen>
+    <dimen name="logo_size">80dp</dimen>
+    <dimen name="icon_size_small">24dp</dimen>
+    <dimen name="icon_size_medium">32dp</dimen>
+    <dimen name="icon_size_large">48dp</dimen>
+    
+    <!-- Corner Radius -->
+    <dimen name="corner_radius_3">3dp</dimen>
+    <dimen name="corner_radius_8">8dp</dimen>
+    <dimen name="corner_radius_10">10dp</dimen>
+    <dimen name="corner_radius_16">16dp</dimen>
+    <dimen name="corner_radius_20">20dp</dimen>
+    <dimen name="corner_radius_50">50dp</dimen>
+    
+    <!-- Card Sizes -->
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_padding">12dp</dimen>
+    
+    <!-- Top Bar -->
+    <dimen name="top_bar_height">56dp</dimen>
+    <dimen name="top_bar_padding_horizontal">16dp</dimen>
+    
+    <!-- Bottom Bar -->
+    <dimen name="bottom_bar_height">60dp</dimen>
+</resources>
+

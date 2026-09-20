@@ -1,0 +1,9 @@
+{
+  "name": "xiaohongshu-android-project",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix server run start",
+    "test": "npm --prefix server test",
+    "migrate:mysql": "npm --prefix server run migrate:mysql"
+  }
+}

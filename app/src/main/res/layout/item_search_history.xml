@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:textSize="13sp"
+    android:textColor="@color/polish_muted"
+    android:background="@drawable/bg_polish_field"
+    android:clickable="true"
+    android:focusable="true"
+    android:singleLine="false"
+    android:maxLines="2"
+    android:ellipsize="end"
+    android:minHeight="36dp"
+    android:gravity="center_vertical" />

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- 选择复选框 -->
+        <CheckBox
+            android:id="@+id/selectCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/imageCardView" />
+
+        <!-- 商品图片，使用圆角背景 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCardView"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/selectCheckBox"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/goodsImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_shop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 商品标题 -->
+        <TextView
+            android:id="@+id/goodsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:text="商品标题"
+            android:textSize="15sp"
+            android:textColor="@color/text_primary"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2dp"
+            app:layout_constraintStart_toEndOf="@id/imageCardView"
+            app:layout_constraintTop_toTopOf="@id/imageCardView"
+            app:layout_constraintEnd_toStartOf="@id/deleteButton" />
+
+        <!-- 商品价格 -->
+        <TextView
+            android:id="@+id/goodsPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:text="¥0.00"
+            android:textSize="18sp"
+            android:textColor="@color/xhs_red"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/imageCardView"
+            app:layout_constraintTop_toBottomOf="@id/goodsTitle" />
+
+        <!-- 数量控制区域 -->
+        <LinearLayout
+            android:id="@+id/quantityLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_quantity_button"
+            android:padding="2dp"
+            app:layout_constraintStart_toEndOf="@id/imageCardView"
+            app:layout_constraintTop_toBottomOf="@id/goodsPrice"
+            app:layout_constraintBottom_toBottomOf="@id/imageCardView">
+
+            <TextView
+                android:id="@+id/decreaseButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:text="−"
+                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider_color"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/quantityText"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="15sp"
+                android:textColor="@color/text_primary"
+                android:gravity="center"
+                android:minHeight="32dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/divider_color"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/increaseButton"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:text="+"
+                android:textSize="20sp"
+                android:textColor="@color/text_primary"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <!-- 删除按钮 -->
+        <ImageView
+            android:id="@+id/deleteButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/icon_lajitong"
+            android:tint="@color/text_secondary"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageCardView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

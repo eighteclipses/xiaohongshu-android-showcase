@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Xiaohongshu Android Showcase architecture</title>
+  <desc id="desc">Android client, local Room database and sync queue connect to an Express API, storage, creator console, admin console and optional AI service.</desc>
+  <defs>
+    <linearGradient id="client" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff1f3"/><stop offset="1" stop-color="#ffe1e7"/></linearGradient>
+    <linearGradient id="server" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#eef5ff"/><stop offset="1" stop-color="#dceaff"/></linearGradient>
+    <linearGradient id="data" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#effaf3"/><stop offset="1" stop-color="#d8f2e2"/></linearGradient>
+    <linearGradient id="console" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff8e9"/><stop offset="1" stop-color="#ffedc2"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#263238" flood-opacity=".13"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#667085"/></marker>
+    <style>
+      .box { stroke: #ccd3df; stroke-width: 2; rx: 18; filter: url(#shadow); }
+      .label { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #1f2937; }
+      .small { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #475467; }
+      .line { stroke: #667085; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke-dasharray: 9 8; }
+    </style>
+  </defs>
+  <rect width="1200" height="650" fill="#fbfcfe"/>
+  <text x="60" y="62" class="label" font-size="30">Android community app · public showcase architecture</text>
+  <text x="60" y="92" class="small">Local-first mobile experience + REST backend + creator and moderation consoles</text>
+
+  <rect x="55" y="150" width="265" height="190" class="box" fill="url(#client)"/>
+  <text x="85" y="195" class="label">Android App</text>
+  <text x="85" y="228" class="small">Java / Kotlin · View UI</text>
+  <text x="85" y="256" class="small">Feed · Search · Publish</text>
+  <text x="85" y="284" class="small">Room · Retrofit · Media</text>
+  <text x="85" y="312" class="small">Wallet · Notifications</text>
+
+  <rect x="55" y="410" width="265" height="145" class="box" fill="url(#data)"/>
+  <text x="85" y="455" class="label">Local Data Layer</text>
+  <text x="85" y="487" class="small">Room database</text>
+  <text x="85" y="515" class="small">PendingSyncStore</text>
+  <text x="85" y="543" class="small">Offline fallback + retry</text>
+
+  <rect x="470" y="150" width="280" height="205" class="box" fill="url(#server)"/>
+  <text x="500" y="195" class="label">Express API</text>
+  <text x="500" y="228" class="small">JWT + bcrypt auth</text>
+  <text x="500" y="256" class="small">Posts · Comments · Search</text>
+  <text x="500" y="284" class="small">Upload · Statistics</text>
+  <text x="500" y="312" class="small">Moderation · Wallet ledger</text>
+
+  <rect x="470" y="425" width="280" height="130" class="box" fill="url(#data)"/>
+  <text x="500" y="470" class="label">Storage Adapter</text>
+  <text x="500" y="502" class="small">MySQL 8 for durable mode</text>
+  <text x="500" y="530" class="small">JSON for isolated demo mode</text>
+
+  <rect x="900" y="140" width="245" height="125" class="box" fill="url(#console)"/>
+  <text x="930" y="185" class="label">Creator Console</text>
+  <text x="930" y="218" class="small">Drafts · Notes · Trends</text>
+  <text x="930" y="244" class="small">CSV import · Publish</text>
+
+  <rect x="900" y="315" width="245" height="125" class="box" fill="url(#console)"/>
+  <text x="930" y="360" class="label">Admin Console</text>
+  <text x="930" y="393" class="small">Review · Reports · Rules</text>
+  <text x="930" y="419" class="small">Users · Audit log</text>
+
+  <rect x="900" y="490" width="245" height="100" class="box" fill="#f5efff"/>
+  <text x="930" y="532" class="label">Optional AI</text>
+  <text x="930" y="563" class="small">Server-side note assistant</text>
+
+  <path d="M320 245 C380 245 405 245 470 245" class="line"/>
+  <path d="M185 340 L185 410" class="line"/>
+  <path d="M320 482 C390 482 405 490 470 490" class="line"/>
+  <path d="M750 230 C810 230 835 205 900 205" class="line"/>
+  <path d="M750 275 C815 275 840 375 900 375" class="line"/>
+  <path d="M610 355 L610 425" class="line"/>
+  <path d="M750 300 C830 350 835 525 900 540" class="line dashed"/>
+
+  <text x="338" y="228" class="small">REST / Multipart</text>
+  <text x="202" y="382" class="small">read/write local</text>
+  <text x="765" y="214" class="small">creator APIs</text>
+  <text x="770" y="355" class="small">governance APIs</text>
+  <text x="625" y="397" class="small">persist</text>
+  <text x="780" y="505" class="small">optional integration</text>
+</svg>

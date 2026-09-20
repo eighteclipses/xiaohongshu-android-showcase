@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Theme Colors (from Compose) -->
+    <color name="purple_200">#FFD0BCFF</color>
+    <color name="purple_500">#FF6650a4</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_grey_80">#FFCCC2DC</color>
+    <color name="purple_grey_40">#FF625b71</color>
+    <color name="pink_80">#FFEFB8C8</color>
+    <color name="pink_40">#FF7D5260</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    
+    <!-- Xiaohongshu Brand Colors -->
+    <color name="xhs_red">#FFFE2C55</color>
+    <color name="xhs_pink">#FFFFB6C1</color>
+    <color name="xhs_grey">#FFF5F5F5</color>
+    <color name="xhs_dark_grey">#FF333333</color>
+    <color name="xhs_light_grey">#FF999999</color>
+    <color name="theme_red">#FF3B40</color>
+    <color name="theme_text_gray">#808080</color>
+    <color name="divider_color">#FFE8E8E8</color>
+    <color name="theme_background_gray">#FFF1F3F5</color>
+    
+    <!-- Background Colors -->
+    <color name="background_white">#FFFFFFFF</color>
+    <color name="background_black">#FF000000</color>
+    <color name="background_grey">#FFF5F5F5</color>
+    <color name="background_light_grey">#FFF1F3F5</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FF333333</color>
+    <color name="text_secondary">#FF999999</color>
+    <color name="text_gray">#808080</color>
+    <color name="text_white">#FFFFFFFF</color>
+    <color name="text_black">#FF000000</color>
+    
+    <!-- Special Colors -->
+    <color name="mine_bg_gradient">#FF172C42</color>
+    <color name="mine_bg_gradient_80">#CC172C42</color>
+    <color name="mine_bg_gradient_70">#B3172C42</color>
+    <color name="mine_bg_gradient_60">#99172C42</color>
+    <color name="white_30">#30FFFFFF</color>
+    <color name="white_20">#20FFFFFF</color>
+    <color name="white_80">#80FFFFFF</color>
+    <color name="white_50">#50FFFFFF</color>
+    
+    <!-- Message Icon Backgrounds -->
+    <color name="icon_bg_red">#60FA8072</color>
+    <color name="icon_bg_blue">#601E90FF</color>
+    <color name="icon_bg_green">#6000EE76</color>
+    
+    <!-- Shop Colors -->
+    <color name="shop_gradient_start">#FFFFE4E1</color>
+    <color name="shop_gradient_end">#FFFFFFFF</color>
+    
+    <!-- Search Colors -->
+    <color name="search_orange">#FFFF8C00</color>
+    <color name="hotspot_rank_1">#FFFE2C55</color>
+    <color name="hotspot_rank_2">#FFFF8C00</color>
+    <color name="hotspot_rank_3">#FFFFD700</color>
+    <color name="hotspot_rank_other">#FF999999</color>
+    
+    <!-- Publish Colors -->
+    <color name="publish_bg_dark">#FF363636</color>
+    <color name="publish_pink">#FFFF69B4</color>
+    <color name="publish_pink_dark">#FFFF1493</color>
+    <color name="publish_bg_gradient_start">#FFE0F2F1</color>
+    <color name="publish_bg_gradient_end">#FFFFFFFF</color>
+    <color name="publish_card_bg">#FFFFFFFF</color>
+    <color name="publish_text_primary">#FF333333</color>
+    <color name="publish_text_secondary">#FF999999</color>
+    <color name="publish_quote_icon">#FFE0E0E0</color>
+    
+    <!-- Shimmer Colors -->
+    <color name="shimmer_light">#99CCCCCC</color>
+    <color name="shimmer_medium">#33CCCCCC</color>
+    <color name="shimmer_dark">#99CCCCCC</color>
+    
+    <!-- Order Status Colors -->
+    <color name="status_orange">#FFFF9500</color>
+    <color name="status_blue">#FF007AFF</color>
+    <color name="status_green">#FF34C759</color>
+</resources>

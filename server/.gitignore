@@ -1,0 +1,8 @@
+data.json
+data.json.tmp
+.smoke-data.json
+.smoke-data.json.tmp
+node_modules/
+.env
+.backups/
+uploads/

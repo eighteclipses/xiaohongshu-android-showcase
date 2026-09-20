@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 薯币余额卡片 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/coinCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/xhs_red"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="薯币余额"
+                        android:textSize="16sp"
+                        android:textColor="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/eyeIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/icon_eye"
+                        android:tint="@color/white"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="显示/隐藏余额" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/coinBalanceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rechargeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_recharge_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="充值"
+                android:textSize="15sp"
+                android:textColor="@color/xhs_red"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- 次要资产入口 -->
+    <LinearLayout
+        android:id="@+id/assetsListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/coinCard">
+
+        <!-- 订单累计消费 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/orderPaidItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/orderPaidIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/icon_wallet"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/orderPaidValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥ 0.00"
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/orderPaidArrow"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/orderPaidLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="订单累计消费"
+                android:textSize="14sp"
+                android:textColor="@color/text_secondary"
+                app:layout_constraintStart_toEndOf="@id/orderPaidIcon"
+                app:layout_constraintEnd_toStartOf="@id/orderPaidValue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/orderPaidArrow"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/icon_arrow_down"
+                android:rotation="270"
+                android:tint="@color/text_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <!-- 明细标题 -->
+    <TextView
+        android:id="@+id/coinHistoryHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="薯币明细"
+        android:textSize="15sp"
+        android:textColor="@color/text_primary"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/assetsListLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/coinHistoryList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/coinHistoryHeader"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- 空明细提示 -->
+    <TextView
+        android:id="@+id/coinHistoryEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="32dp"
+        android:text="暂无薯币收支记录，充值或送礼物后可以看到明细"
+        android:textSize="13sp"
+        android:textColor="@color/text_secondary"
+        app:layout_constraintTop_toBottomOf="@id/coinHistoryHeader" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

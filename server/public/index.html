@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小红书创作服务平台</title>
+  <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/moderation.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark" style="min-width:58px;padding:0 7px;font-size:12px">小红书</span><span>创作服务平台</span></div>
+      <nav class="nav-list" aria-label="主导航">
+        <button class="nav-item active" data-view="home">⌂ <span>首页</span></button>
+        <button class="nav-item" data-view="notes">▤ <span>内容管理</span></button>
+        <button class="nav-item" data-view="data">▥ <span>数据中心</span></button>
+        <button class="nav-item" data-view="services">✦ <span>创作服务</span></button>
+        <a class="nav-item" href="/admin">▣ <span>管理后台</span></a>
+      </nav>
+      <div class="sidebar-footer">学习版工作台<br><span>本地数据，仅用于开发联调</span></div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">CREATOR CENTER</p>
+          <h1 id="pageTitle">创作者中心</h1>
+        </div>
+        <div class="account-area">
+          <span id="accountState">未登录</span>
+          <button class="button button-light" id="loginButton">登录 / 注册</button>
+        </div>
+      </header>
+      <p class="form-error" id="dataError" role="alert"></p><details id="creatorReviewNotices" class="panel-card hidden" style="margin-bottom:18px"><summary>审核通知</summary><div id="creatorReviewNoticeList"></div></details>
+
+      <section class="login-strip" id="loginStrip">
+        <div><strong>连接你的创作账号</strong><span>登录后查看笔记、互动数据并发布内容</span></div>
+        <div class="login-fields" style="justify-content:flex-end">
+          <a class="button button-primary" href="/login">前往登录</a>
+          <a class="button button-outline" href="/login">注册账号</a>
+        </div>
+        <p class="form-error" id="loginError"></p>
+      </section>
+
+      <section class="view" data-view-panel="home">
+        <div class="welcome-row">
+          <div><h2>今天也来发布一篇笔记吧</h2><p>记录生活、分享经验，让好内容被更多人看见。</p></div>
+          <button class="button button-primary" id="createNoteButton">＋ 发布笔记</button>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card"><span>粉丝数</span><strong id="followersMetric">0</strong><small>持续积累真实关注</small></article>
+          <article class="metric-card"><span>公开笔记</span><strong id="postsMetric">0</strong><small>已发布的内容</small></article>
+          <article class="metric-card"><span>互动总数</span><strong id="interactionsMetric">0</strong><small>点赞、收藏与评论</small></article>
+          <article class="metric-card"><span>账号状态</span><strong class="status-good">正常</strong><small>内容可正常发布</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel-card"><div class="panel-heading"><h3>最近发布</h3><button class="text-button" data-view-link="notes">查看全部</button></div><div id="recentPosts" class="post-list"></div></article>
+          <article class="panel-card service-card"><div class="panel-heading"><h3>创作服务</h3></div><button class="service-row" data-view-link="data"><span class="service-icon">▥</span><span><b>数据中心</b><small>查看内容表现和互动趋势</small></span><i>›</i></button><button class="service-row" data-view-link="notes"><span class="service-icon">▤</span><span><b>笔记管理</b><small>管理已发布内容和草稿</small></span><i>›</i></button><button class="service-row" data-view-link="services"><span class="service-icon">✦</span><span><b>作者权益</b><small>了解创作活动和合作机会</small></span><i>›</i></button></article>
+        </div>
+      </section>
+
+      <section class="view hidden" data-view-panel="notes">
+        <div class="section-heading"><div><p class="eyebrow">CONTENT</p><h2>笔记管理</h2></div><button class="button button-primary" id="createNoteButton2">＋ 发布笔记</button></div>
+        <div class="tabs"><button class="tab active" data-note-filter="all">全部</button><button class="tab" data-note-filter="published">公开笔记</button><button class="tab" data-note-filter="private">仅自己可见</button><button class="tab" data-note-filter="pending">审核中</button><button class="tab" data-note-filter="rejected">未通过</button><button class="tab" data-note-filter="draft">草稿</button><button class="tab" data-note-filter="trash">回收站</button></div>
+        <div class="creator-bulk-tools"><input id="creatorSearch" type="search" placeholder="搜索我的笔记"><label>每页 <select id="creatorPageSize"><option>10</option><option selected>20</option><option>50</option></select></label><button id="creatorImport" class="button button-light">导入草稿 CSV</button><a class="text-button" href="/templates/creator-drafts.csv" download>下载模板</a><input id="creatorImportFile" type="file" accept=".csv,text/csv" hidden></div>
+        <div class="creator-bulk-tools"><label><input type="checkbox" id="creatorSelectPage">全选当前页</label><span id="creatorSelectedCount">已选 0 条</span><select id="creatorBatchAction"><option value="submit">提交公开审核</option><option value="private">设为私密</option><option value="public">设为公开</option><option value="draft">转为草稿</option><option value="delete">移入回收站</option><option value="restore">恢复为私密草稿</option></select><button id="creatorRunBatch" class="button button-primary" disabled>批量执行</button><label>跳至 <input id="creatorJumpInput" type="number" min="1" value="1" style="width:62px"> 页</label><button id="creatorJump" class="button button-light">跳转</button></div>
+        <p id="creatorOperationResult" class="creator-import-results" role="status"></p>
+        <div id="allPosts" class="notes-grid"></div>
+      </section>
+
+      <section class="view hidden" data-view-panel="data">
+        <div class="section-heading"><div><p class="eyebrow">ANALYTICS</p><h2>数据中心</h2></div><span class="range-label">基于你的真实笔记数据</span></div>
+        <div class="metric-grid compact"><article class="metric-card"><span>点赞</span><strong id="likesMetric">0</strong></article><article class="metric-card"><span>收藏</span><strong id="collectionsMetric">0</strong></article><article class="metric-card"><span>评论</span><strong id="commentsMetric">0</strong></article><article class="metric-card"><span>草稿</span><strong id="draftsMetric">0</strong></article></div>
+        <article class="panel-card">
+          <div class="panel-heading"><h3>近 7 天创作与互动趋势</h3><span class="range-label" id="chartRange">-</span></div>
+          <div class="chart-wrap"><canvas id="trendChart" width="720" height="230"></canvas></div>
+          <div class="chart-legend"><span><i class="legend-dot bar"></i>发布笔记数</span><span><i class="legend-dot line"></i>互动量（赞 + 藏 + 评）</span></div>
+        </article>
+        <article class="panel-card top-posts-card"><div class="panel-heading"><h3>笔记表现排行</h3><span class="range-label">按点赞数排序</span></div><div id="topPosts" class="post-list"></div></article>
+      </section>
+
+      <section class="view hidden" data-view-panel="services">
+        <div class="section-heading"><div><p class="eyebrow">SERVICES</p><h2>创作服务</h2></div><span class="range-label">演示功能：进度基于真实笔记数据，报名与积分保存在本地浏览器</span></div>
+        <div class="service-grid"><article class="feature-card"><span class="feature-icon">✦</span><h3>活动中心</h3><p>报名官方活动，按真实创作进度领取奖励。</p><button class="text-button" data-view-link="activity">查看活动 ›</button></article><article class="feature-card"><span class="feature-icon">↗</span><h3>成长中心</h3><p>完成创作任务、提升创作者等级，解锁更多权益。</p><button class="text-button" data-view-link="growth">查看成长 ›</button></article><article class="feature-card"><span class="feature-icon">◎</span><h3>作者邀约</h3><p>优质笔记会收到品牌合作邀约，接约后发布合作内容。</p><button class="text-button" data-view-link="invite">查看邀约 ›</button></article></div>
+      </section>
+
+      <section class="view hidden" data-view-panel="activity">
+        <div class="section-heading"><div><p class="eyebrow">ACTIVITY</p><h2>活动中心</h2></div><button class="button button-light" data-view-link="services">‹ 返回创作服务</button></div>
+        <div class="panel-card"><span class="range-label">演示功能：报名与积分仅保存在本地浏览器</span></div>
+        <div id="activityList" class="stack-list"></div>
+      </section>
+
+      <section class="view hidden" data-view-panel="growth">
+        <div class="section-heading"><div><p class="eyebrow">GROWTH</p><h2>成长中心</h2></div><button class="button button-light" data-view-link="services">‹ 返回创作服务</button></div>
+        <div class="panel-card" style="margin-bottom:16px"><span class="range-label">演示功能：任务与积分仅保存在本地浏览器</span></div>
+        <article class="panel-card level-card">
+          <div class="level-head"><div><span class="level-badge" id="levelBadge">LV1</span><div><h3 id="levelName">入门创作者</h3><p id="levelDesc">继续发布内容，提升创作者等级。</p></div></div><div class="points-box"><span>创作积分</span><strong id="pointsValue">0</strong></div></div>
+          <div class="progress-track"><div class="progress-fill" id="levelProgress"></div></div>
+          <p class="level-next" id="levelNext"></p>
+        </article>
+        <article class="panel-card"><div class="panel-heading"><h3>创作任务</h3><span class="range-label">完成任务领取积分</span></div><div id="growthTasks" class="stack-list"></div></article>
+      </section>
+
+      <section class="view hidden" data-view-panel="invite">
+        <div class="section-heading"><div><p class="eyebrow">INVITATION</p><h2>作者邀约</h2></div><button class="button button-light" data-view-link="services">‹ 返回创作服务</button></div>
+        <div class="panel-card" style="margin-bottom:16px"><span class="range-label">演示功能：邀约为本地模拟生成，非真实品牌合作</span></div>
+        <div id="inviteList" class="stack-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="noteModal">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><p class="eyebrow">NEW NOTE</p><h2 id="modalTitle">发布笔记</h2></div><button class="icon-button" id="closeModalButton" aria-label="关闭">×</button></div>
+      <div class="tabs"><button class="tab active" data-media-type="image" type="button">图文</button><button class="tab" data-media-type="video" type="button">视频</button></div>
+      <label>标题（可选）<input id="noteTitleInput" maxlength="80" placeholder="给笔记起个标题"></label>
+      <label>正文<textarea id="noteContentInput" rows="7" maxlength="20000" placeholder="分享你的想法、经验或故事"></textarea></label>
+      <label>可见范围<select id="noteVisibilityInput"><option value="public">公开可见</option><option value="private">仅自己可见</option></select></label>
+      <div id="imageFields">
+        <label>图片地址（可选，每行一张）<textarea id="noteImagesInput" rows="3" placeholder="https://.../image.jpg"></textarea></label>
+        <label>上传图片（可选，最多 9 张，每张不超过 10MB）<input id="noteFilesInput" type="file" accept="image/*" multiple></label>
+      </div>
+      <div id="videoFields" class="hidden">
+        <label>上传视频（mp4/webm，不超过 50MB）<input id="noteVideoInput" type="file" accept="video/mp4,video/webm"></label>
+        <label>或视频地址（二选一）<input id="noteVideoUrlInput" placeholder="/uploads/xxx.mp4 或 https://..."></label>
+        <video id="noteVideoPreview" class="note-video-preview hidden" controls></video>
+      </div>
+      <div class="modal-actions"><button class="button button-outline" id="saveDraftWebButton">存为草稿</button><button class="button button-primary" id="publishWebButton">发布</button></div>
+      <p class="form-error" id="noteError"></p>
+    </section>
+  </div>
+  <script src="/app.js"></script><script src="/creator-management.js"></script>
+</body>
+</html>

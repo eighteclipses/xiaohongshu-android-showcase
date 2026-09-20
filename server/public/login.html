@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 - 小红书创作服务平台</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .login-page { min-height: 100vh; display: grid; place-items: center; background: linear-gradient(135deg, #fff0f3, #f6f7f9 60%); padding: 24px; }
+    .login-card { width: min(420px, 100%); background: #fff; border: 1px solid #e8eaee; border-radius: 14px; padding: 34px 32px 26px; box-shadow: 0 18px 50px #1b1d2112; }
+    .login-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; margin-bottom: 24px; }
+    .login-card h2 { font-size: 22px; margin: 0 0 4px; }
+    .login-card .sub { color: #8d929b; font-size: 13px; margin: 0 0 18px; }
+    .login-card label { display: grid; gap: 7px; color: #676d77; font-size: 12px; margin: 14px 0; }
+    .login-card input { border: 1px solid #dfe2e7; border-radius: 7px; padding: 11px 12px; font: inherit; font-size: 14px; outline: none; background: #fff; }
+    .login-card input:focus { border-color: #fe2c55; box-shadow: 0 0 0 2px #ffe2e8; }
+    .login-submit { width: 100%; padding: 12px; font-size: 14px; margin-top: 8px; }
+    .login-alt { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: 13px; color: #6b7078; }
+    .login-alt a { color: #fe2c55; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="login-page">
+    <section class="login-card">
+      <div class="login-brand"><span class="brand-mark" style="min-width:58px;padding:0 7px;font-size:12px">小红书</span><span>创作服务平台</span></div>
+      <h2>登录创作者账号</h2>
+      <p class="sub">登录后管理笔记、查看互动数据并发布内容</p>
+      <label>用户名<input id="loginUsername" placeholder="请输入用户名（2-30 位）" autocomplete="username"></label>
+      <label>密码<input id="loginPassword" type="password" placeholder="请输入密码（至少 6 位）" autocomplete="current-password"></label>
+      <button class="button button-primary login-submit" id="loginSubmit">登 录</button>
+      <p class="form-error" id="loginError"></p>
+      <div class="login-alt">
+        <span>还没有账号？<a href="#" id="registerLink">立即注册</a></span>
+        <a href="/">‹ 返回首页</a>
+      </div>
+    </section>
+  </main>
+  <script>
+    const $ = id => document.getElementById(id);
+    const token = localStorage.getItem('xhs_token') || '';
+    if (token) location.href = '/';
+
+    async function submit(register) {
+      const username = $('loginUsername').value.trim();
+      const password = $('loginPassword').value;
+      $('loginError').textContent = '';
+      if (!username || !password) { $('loginError').textContent = '请输入用户名和密码'; return; }
+      try {
+        const response = await fetch(`/api/auth/${register ? 'register' : 'login'}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password, nickname: username })
+        });
+        const body = await response.json().catch(() => ({}));
+        if (!response.ok || body.code !== 200) throw new Error(body.message || '请求失败');
+        localStorage.setItem('xhs_token', body.data.access_token);
+        location.href = '/';
+      } catch (error) { $('loginError').textContent = error.message; }
+    }
+
+    $('loginSubmit').addEventListener('click', () => submit(false));
+    $('loginPassword').addEventListener('keydown', event => { if (event.key === 'Enter') submit(false); });
+    $('registerLink').addEventListener('click', event => { event.preventDefault(); submit(true); });
+  </script>
+</body>
+</html>

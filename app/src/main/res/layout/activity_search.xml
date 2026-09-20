@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/polish_canvas"
+    android:fitsSystemWindows="true">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/polish_canvas"
+        app:elevation="0dp">
+        <include android:id="@+id/searchTopBar" layout="@layout/search_top_bar" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout style="@style/PolishCard" android:background="@drawable/bg_polish_hero" android:padding="22dp">
+                <TextView
+                    style="@style/PolishCaption"
+                    android:text="探索 · 发现"
+                    android:textColor="@color/xhs_red"
+                    android:fontFamily="sans-serif-medium" />
+                <TextView
+                    style="@style/PolishSectionTitle"
+                    android:text="生活灵感，从这里开始"
+                    android:textSize="24sp"
+                    android:layout_marginTop="10dp" />
+                <TextView style="@style/PolishCaption" android:text="搜笔记、找朋友，发现感兴趣的内容" android:layout_marginTop="8dp" />
+            </LinearLayout>
+            <LinearLayout style="@style/PolishCard">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:id="@+id/historyTitle"
+                        style="@style/PolishSectionTitle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="最近搜索" />
+                    <ImageView
+                        android:id="@+id/deleteHistoryButton"
+                        style="@style/PolishIconAction"
+                        android:src="@drawable/icon_lajitong"
+                        android:contentDescription="清空搜索历史" />
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/historyRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginTop="6dp" />
+            </LinearLayout>
+            <LinearLayout style="@style/PolishCard">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+                    <TextView
+                        style="@style/PolishSectionTitle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="猜你想搜" />
+                    <ImageView
+                        android:id="@+id/refreshSuggestionsButton"
+                        style="@style/PolishIconAction"
+                        android:src="@drawable/icon_refresh"
+                        android:contentDescription="刷新推荐" />
+                    <ImageView
+                        android:id="@+id/hideSuggestionsButton"
+                        style="@style/PolishIconAction"
+                        android:src="@drawable/icon_eye"
+                        android:contentDescription="隐藏推荐" />
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/suggestionsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+            <LinearLayout style="@style/PolishCard">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/icon_fire"
+                        android:tint="@color/xhs_red"
+                        android:importantForAccessibility="no"
+                        android:layout_marginEnd="8dp" />
+                    <TextView style="@style/PolishSectionTitle" android:text="社区话题榜" />
+                </LinearLayout>
+                <TextView
+                    style="@style/PolishCaption"
+                    android:text="从社区笔记中发现热门话题"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="14dp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/hotspotRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

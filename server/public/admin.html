@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>内容治理工作台</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/moderation.css"></head>
+<body class="moderation-page">
+<section id="adminLoginPage" class="review-login"><div class="review-brand">小红书 <span>内容治理</span></div><h1>欢迎回到工作台</h1><p>审核有据，创作有序。</p><label>管理员账号<input id="adminUsername" autocomplete="username"></label><label>管理员密码<input id="adminPassword" type="password" autocomplete="current-password"></label><button id="adminLoginButton" class="button button-primary">登录工作台</button><p id="adminError" role="alert"></p><a href="/">返回创作者平台</a></section>
+<div id="adminConsole" class="review-shell hidden">
+<aside class="review-sidebar"><div class="review-brand">小红书 <span>内容治理</span></div><p class="nav-caption">工作台</p><nav id="reviewNav"></nav><a href="/" class="creator-link">← 创作者平台</a><div class="sidebar-caption">关键词初审 · AI 建议 · 人工裁定</div></aside>
+<main class="review-main"><header class="review-header"><div><p class="eyebrow">CONTENT GOVERNANCE</p><h1 id="adminTitle">数据概览</h1><p id="viewDescription" class="muted"></p></div><div class="account-area"><span id="adminState"></span><button id="adminLogout" class="button button-light">退出</button></div></header>
+<div id="reviewError" class="notice error hidden" role="alert"></div><div id="reviewMessage" class="notice hidden" role="status"></div>
+<section id="reviewDashboard"></section>
+<section id="reviewList" class="hidden"><div class="review-toolbar"><input id="listKeyword" type="search" placeholder="搜索内容、作者或编号" aria-label="搜索记录"><select id="listStatus" aria-label="状态筛选"></select><select id="listSort" aria-label="排序"><option value="time">最新优先</option><option value="likes">点赞最多</option></select><button id="refreshList" class="button button-light">刷新</button><button id="newRule" class="button button-primary hidden">＋ 新增关键词</button><button id="importRules" class="button button-light hidden">导入词库 CSV</button><a id="ruleTemplate" class="button button-light hidden" href="/templates/keyword-rules.csv" download>词库模板</a><label id="selectPageLabel" class="hidden"><input id="selectPageTop" type="checkbox">全选当前页</label><input id="rulesFile" type="file" accept=".csv,text/csv" hidden></div>
+<div id="batchBar" class="batch-bar hidden"><span id="selectedCount">已选 0 条</span><select id="batchAction" aria-label="批量操作"></select><button id="runBatch" class="button button-primary">执行所选操作</button><button id="clearSelection" class="button button-light">清空选择</button></div>
+<div class="review-pager"><span id="pageSummary"></span><div><label>每页 <select id="pageSize"><option>10</option><option selected>20</option><option>50</option></select></label><button id="prevPage" class="button button-light">上一页</button><input id="pageJump" type="number" min="1" value="1" aria-label="跳转页码"><button id="jumpPage" class="button button-light">跳转</button><button id="nextPage" class="button button-light">下一页</button></div></div>
+<div id="tableContainer" class="review-table-card"></div>
+
+</section>
+</main></div>
+<dialog id="detailDrawer" class="review-drawer"><header><h2 id="drawerTitle">审核详情</h2><button id="closeDrawer" class="icon-button" aria-label="关闭详情">×</button></header><div id="drawerBody"></div></dialog>
+<dialog id="actionDialog" class="review-modal"><h2 id="actionTitle"></h2><div id="actionContent"></div><p id="actionError" class="form-error"></p><footer><button id="cancelAction" class="button button-light">取消</button><button id="confirmAction" class="button button-primary">确认</button></footer></dialog>
+<script src="/admin.js"></script></body></html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/giftIcon"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:gravity="center"
+        android:text="🎁"
+        android:textSize="30sp"
+        android:background="@drawable/bg_bubble_other"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/giftName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="玫瑰"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/giftPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9 币"
+        android:textColor="#C99400"
+        android:textSize="11sp" />
+</LinearLayout>

@@ -1,0 +1,42 @@
+const test=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const os=require('node:os');const path=require('node:path');
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'xhs-moderation-test-'));
+Object.assign(process.env,{DATA_FILE:path.join(dir,'data.json'),JWT_SECRET:'test-secret',ADMIN_USERNAME:'review-admin',ADMIN_PASSWORD:'test-password',STORAGE:'json'});
+const app=require('./server');
+test('moderation API, ownership, import idempotency, batches, recycle and pagination',async()=>{
+ const server=await new Promise(resolve=>{const s=app.listen(0,'127.0.0.1',()=>resolve(s));});const base=`http://127.0.0.1:${server.address().port}/api`;
+ const request=async(route,method='GET',body,token,expected=200)=>{const res=await fetch(base+route,{method,headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},body:body===undefined?undefined:JSON.stringify(body)});const data=await res.json();assert.equal(res.status,expected,`${route}: ${data.message}`);return data.data;};
+ try{
+ const a=await request('/auth/register','POST',{username:'moderator_alice',password:'test-pass'});const b=await request('/auth/register','POST',{username:'moderator_bob',password:'test-pass'});const admin=await request('/admin/auth/login','POST',{username:'review-admin',password:'test-password'});const at=a.access_token,bt=b.access_token,mt=admin.access_token;
+ await request('/admin/keyword-rules','POST',{term:'广告词'},at,403);await request('/admin/keyword-rules','POST',{term:'广告词'},mt);
+ const clean=await request('/posts','POST',{title:'normal',content:'clean',status:'hidden'},at);assert.equal(clean.status,'approved');
+ const pending=await request('/posts','POST',{title:'广告词',content:'只是引用',status:'approved'},at);assert.equal(pending.status,'pending');await request('/posts/'+pending.id,'GET',undefined,bt,404);
+ await request('/posts/'+pending.id,'PUT',{content:'changed'},at,409);
+ let cases=await request('/admin/moderation-cases','GET',undefined,mt);assert.equal(cases.pagination.total,1);
+ await request('/admin/moderation-cases/'+cases.items[0].id+'/decision','POST',{decision:'approved',reason:'正常引用',content_version:1},mt);
+ await request('/posts/'+pending.id,'GET',undefined,bt);
+ await request('/posts/'+pending.id+'/report','POST',{reason:'复查请求'},bt);const still=await request('/posts/'+pending.id,'GET',undefined,bt);assert.equal(still.status,'approved');
+ cases=await request('/admin/moderation-cases?kind=report&state=open','GET',undefined,mt);assert.equal(cases.pagination.total,1);
+ await request('/admin/moderation-cases/'+cases.items[0].id+'/decision','POST',{decision:'hidden',reason:'人工确认',content_version:1},mt);await request('/posts/'+pending.id,'GET',undefined,bt,404);
+ const csv='title,content,topics,location\nfirst,hello,a|b,here\n,,,\nsecond,world,topic,there';
+ const imported=await request('/creators/me/posts/import','POST',{csv,request_id:'import-test-123'},at);assert.equal(imported.succeeded,2);
+ const repeated=await request('/creators/me/posts/import','POST',{csv,request_id:'import-test-123'},at);assert.deepEqual(repeated,imported);
+ const list=await request('/creators/me/posts?filter=draft&limit=10','GET',undefined,at);assert.equal(list.pagination.total,2);assert.ok(list.posts.every(p=>!p.is_public));
+ const batched=await request('/creators/me/posts/batch','POST',{action:'delete',items:[{id:clean.id,content_version:1},{id:'missing',content_version:1}]},at);assert.equal(batched.succeeded,1);assert.equal(batched.failed,1);await request('/posts/'+clean.id,'GET',undefined,at,404);
+ const trash=await request('/creators/me/posts?filter=trash','GET',undefined,at);assert.equal(trash.pagination.total,1);
+ await request('/creators/me/posts/batch','POST',{action:'restore',items:[{id:clean.id,content_version:trash.posts[0].content_version}]},at);
+ const restored=await request('/posts/'+clean.id,'GET',undefined,at);assert.equal(restored.is_draft,true);assert.equal(restored.is_public,false);
+ const persisted=JSON.parse(fs.readFileSync(process.env.DATA_FILE));assert.equal(persisted.keywordRules.length,1);assert.equal(persisted.moderationCases.length,2);assert.ok(persisted.moderationEvents.length>0);assert.ok(persisted.posts.find(p=>p.id===pending.id).review_note);
+ const bad=await request('/creators/me/posts/batch','POST',{action:'delete',items:[{id:pending.id,content_version:1}]},bt);assert.equal(bad.failed,1);
+ const many='title,content,topics,location\n'+Array.from({length:25},(_,i)=>`page-note-${i},body,topic,`).join('\n');
+ await request('/creators/me/posts/import','POST',{csv:many,request_id:'many-pages-123'},at);
+ const firstPage=await request('/creators/me/posts?filter=draft&limit=10&page=1','GET',undefined,at);
+ const secondPage=await request('/creators/me/posts?filter=draft&limit=10&page=2','GET',undefined,at);
+ assert.equal(firstPage.posts.length,10);assert.equal(secondPage.posts.length,10);assert.equal(firstPage.pagination.pages,3);assert.ok(secondPage.posts.every(p=>!firstPage.posts.some(x=>x.id===p.id)));
+ await request('/creators/me/posts/batch','POST',{action:'delete',items:Array.from({length:101},(_,i)=>({id:String(i),content_version:1}))},at,400);
+ const changed=await request('/posts','POST',{title:'广告词',content:'before'},at);
+ const oldCases=await request('/admin/moderation-cases?state=open','GET',undefined,mt);const previous=oldCases.items.find(c=>c.postId===changed.id);
+ const edited=await request('/posts/'+changed.id,'PUT',{content:'after',content_version:1},at);assert.equal(edited.content_version,2);
+ await request('/admin/moderation-cases/'+previous.id+'/decision','POST',{decision:'approved',reason:'old page',content_version:2},mt,409);
+ const rebased=await request('/admin/moderation-cases/'+previous.id+'/rebase','POST',{content_version:2},mt);assert.equal(rebased.content_version,2);
+ }finally{server.closeAllConnections();await new Promise(resolve=>server.close(resolve));if(!path.resolve(dir).startsWith(path.resolve(os.tmpdir())+path.sep+'xhs-moderation-test-'))throw Error('Unexpected test cleanup path');fs.rmSync(dir,{recursive:true,force:true});}
+});

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xiaohongshu.ui.home.follow.DraggableCardView
+        android:id="@+id/draggableCardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/emptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="还没有关注的人呢"
+            android:textSize="@dimen/text_size_16"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="关注后，可以在这里查看对方的最新动态"
+            android:textSize="@dimen/text_size_12"
+            android:textColor="@color/theme_text_gray" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/loveButton"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/icon_love"
+        android:background="@drawable/circle_white_background"
+        android:padding="8dp"
+        android:contentDescription="加载推荐用户" />
+
+    <com.xiaohongshu.ui.home.follow.AnimatedCircleView
+        android:id="@+id/loaderView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</FrameLayout>
+

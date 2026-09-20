@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/polish_canvas"
+    android:fitsSystemWindows="true">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="18dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout style="@style/PolishCard" android:background="@drawable/bg_polish_hero" android:padding="24dp">
+                <TextView style="@style/PolishCaption" android:text="个人设置" android:textColor="@color/xhs_red" />
+                <TextView
+                    style="@style/PolishSectionTitle"
+                    android:text="账号与偏好"
+                    android:textSize="28sp"
+                    android:layout_marginTop="8dp" />
+                <TextView style="@style/PolishCaption" android:text="管理个人资料、隐私与通知" android:layout_marginTop="8dp" />
+            </LinearLayout>
+            <TextView
+                style="@style/PolishCaption"
+                android:text="账号与隐私"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
+            <LinearLayout style="@style/PolishCard" android:padding="0dp"><TextView android:id="@+id/accountManagement" style="@style/PolishSettingsRow" android:text="个人资料" /><View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginHorizontal="18dp" android:background="#F0F0F5" /><TextView android:id="@+id/privacySettings" style="@style/PolishSettingsRow" android:text="隐私设置" /><View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginHorizontal="18dp" android:background="#F0F0F5" /><TextView android:id="@+id/blacklistManagement" style="@style/PolishSettingsRow" android:text="黑名单管理" /></LinearLayout>
+            <TextView
+                style="@style/PolishCaption"
+                android:text="通知与帮助"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="10dp" />
+            <LinearLayout style="@style/PolishCard" android:padding="0dp"><TextView android:id="@+id/notificationSettings" style="@style/PolishSettingsRow" android:text="通知设置" /><View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginHorizontal="18dp" android:background="#F0F0F5" /><TextView android:id="@+id/about" style="@style/PolishSettingsRow" android:text="关于学习版" /></LinearLayout>
+            <TextView
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="14dp"
+                android:text="退出当前账号"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/xhs_red"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/bg_polish_surface"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true" />
+            <TextView
+                style="@style/PolishCaption"
+                android:text="小红书学习版 · 1.0"
+                android:gravity="center"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="24dp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

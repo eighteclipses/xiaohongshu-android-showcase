@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Xiaohongshu.Polished" parent="Theme.Xiaohongshu">
+        <item name="colorPrimary">@color/xhs_red</item>
+        <item name="colorSecondary">@color/xhs_red</item>
+        <item name="android:statusBarColor">@color/polish_canvas</item>
+        <item name="android:navigationBarColor">@color/polish_canvas</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+    <color name="polish_canvas">#F7F7FA</color>
+    <color name="polish_ink">#242331</color>
+    <color name="polish_muted">#737582</color>
+    <color name="polish_violet">#7054C8</color>
+    <style name="PolishSectionTitle">
+        <item name="android:layout_width">wrap_content</item><item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item><item name="android:textColor">@color/polish_ink</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="PolishCaption">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item><item name="android:textColor">@color/polish_muted</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+    <style name="PolishCard">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item><item name="android:padding">18dp</item>
+        <item name="android:background">@drawable/bg_polish_surface</item>
+        <item name="android:layout_marginBottom">14dp</item>
+    </style>
+    <style name="PolishSettingsRow">
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">60dp</item><item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">18dp</item><item name="android:paddingEnd">18dp</item>
+        <item name="android:paddingTop">12dp</item><item name="android:paddingBottom">12dp</item>
+        <item name="android:textSize">15sp</item><item name="android:textColor">@color/polish_ink</item>
+        <item name="android:drawableEnd">@drawable/ic_polish_chevron</item><item name="android:drawablePadding">12dp</item>
+        <item name="android:clickable">true</item><item name="android:focusable">true</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+    <style name="PolishIconAction">
+        <item name="android:layout_width">44dp</item><item name="android:layout_height">44dp</item>
+        <item name="android:padding">12dp</item><item name="android:tint">@color/polish_muted</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+</resources>

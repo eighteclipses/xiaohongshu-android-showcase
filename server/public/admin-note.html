@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>笔记详情 - 小红书管理后台</title><link rel="stylesheet" href="/styles.css"><style>.detail-muted{color:#8d929b;font-size:13px}.detail-actions{display:flex;gap:8px;align-items:center}.button-danger{border:1px solid #e6445f;background:#fff;color:#d9234c}.detail-images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0}.detail-images:empty{display:none}.detail-images img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px;background:#f2f3f5}.detail-video{margin:16px 0 4px}.detail-video video{width:min(480px,100%);border-radius:8px;background:#101114;display:block}.detail-video:empty{display:none}.detail-content{white-space:pre-wrap;font-size:16px;line-height:1.8;color:#353941;padding:4px 0 20px}.detail-stats{border-top:1px solid #eef0f2;padding-top:14px;color:#7c838d;font-size:13px}@media(max-width:600px){.detail-images{grid-template-columns:repeat(2,minmax(0,1fr))}.detail-actions{flex-direction:column;align-items:stretch}.detail-actions .button{font-size:12px;padding:8px 10px}}</style></head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar"><div class="brand"><span class="brand-mark" style="min-width:58px;padding:0 7px;font-size:12px">小红书</span><span>管理后台</span></div><nav class="nav-list"><a class="nav-item" href="/admin">▥ <span>数据概览</span></a><a class="nav-item active" href="/admin">▤ <span>笔记审核</span></a><a class="nav-item" href="/admin">◎ <span>用户管理</span></a></nav><div class="sidebar-footer">管理员工作台<br><span>审核发布内容和账号状态</span></div></aside>
+  <main class="main-panel">
+    <header class="topbar"><div><p class="eyebrow">MODERATION / NOTE</p><h1>笔记详情</h1></div><div class="account-area"><span id="adminState">未登录</span><a class="button button-light" href="/admin">返回审核</a></div></header>
+    <section class="login-strip" id="noteLogin"><div><strong>管理员登录</strong><span>请先在管理后台登录，再查看笔记详情</span></div><a class="button button-primary" href="/admin">去登录</a></section>
+    <section class="view hidden" id="noteView">
+      <article class="panel-card note-detail-card"><div class="section-heading"><div><p class="eyebrow" id="noteStatus"></p><h2 id="noteTitle">加载中</h2><p id="noteAuthor" class="detail-muted"></p></div><div class="detail-actions" id="noteActions"></div></div><div id="noteVideo" class="detail-video"></div><div id="noteImages" class="detail-images"></div><div id="noteContent" class="detail-content"></div><div class="detail-stats" id="noteStats"></div></article>
+      <article class="panel-card"><div class="panel-heading"><h3>评论</h3></div><div id="noteComments" class="post-list"></div></article>
+    </section>
+    <p class="form-error" id="noteError"></p>
+  </main>
+</div>
+<script src="/admin-note.js"></script>
+</body>
+</html>

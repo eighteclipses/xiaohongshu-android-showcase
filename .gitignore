@@ -1,0 +1,37 @@
+*.iml
+.gradle/
+.gradle-user-home/
+.idea/
+.android/
+.zcode/
+local.properties
+
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+node_modules/
+
+# Local/generated artifacts
+*.db
+*.log
+*.hprof
+*.apk
+*.aab
+ui*.xml
+image-sheet.png
+file_translation_report.txt
+
+# Server runtime data and secrets
+server/.env
+server/data.json
+server/data.json.*
+server/.smoke-data.json
+server/.smoke-data.json.*
+server/uploads/
+server/.backups/
+server/*.log
+
+# Local editor and OS files
+.DS_Store
+Thumbs.db

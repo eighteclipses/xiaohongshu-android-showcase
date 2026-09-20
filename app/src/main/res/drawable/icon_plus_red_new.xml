@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Red background with rounded corners -->
+    <path
+        android:fillColor="@color/xhs_red"
+        android:pathData="M4,0 L44,0 A4,4 0 0,1 48,4 L48,44 A4,4 0 0,1 44,48 L4,48 A4,4 0 0,1 0,44 L0,4 A4,4 0 0,1 4,0 z"/>
+    
+    <!-- White plus sign -->
+    <group>
+        <!-- Horizontal line -->
+        <path
+            android:fillColor="@color/white"
+            android:pathData="M14,22 L34,22 L34,26 L14,26 Z"/>
+        <!-- Vertical line -->
+        <path
+            android:fillColor="@color/white"
+            android:pathData="M22,14 L26,14 L26,34 L22,34 Z"/>
+    </group>
+</vector>
+

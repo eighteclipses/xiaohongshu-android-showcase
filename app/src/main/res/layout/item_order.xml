@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- 商品图片，使用圆角背景 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCardView"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/goodsImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_shop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 商品标题 -->
+        <TextView
+            android:id="@+id/goodsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:text="商品标题"
+            android:textSize="15sp"
+            android:textColor="@color/text_primary"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:lineSpacingExtra="2dp"
+            app:layout_constraintStart_toEndOf="@id/imageCardView"
+            app:layout_constraintTop_toTopOf="@id/imageCardView"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- 订单状态标签 -->
+
+        <!-- 订单价格 -->
+
+        <TextView
+            android:id="@+id/orderStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_order_status_pending_payment"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:text="待付款"
+            android:textColor="@color/xhs_red"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@id/imageCardView"
+            app:layout_constraintTop_toBottomOf="@id/goodsTitle" />
+
+        <TextView
+            android:id="@+id/orderPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="¥0.00"
+            android:textSize="18sp"
+            android:textColor="@color/xhs_red"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/goodsTitle" />
+
+        <!-- 订单时间 -->
+        <TextView
+            android:id="@+id/orderTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:text="2024-01-01 12:00"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/imageCardView"
+            app:layout_constraintTop_toBottomOf="@id/orderStatusText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="12dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:textSize="13sp"
+    android:textColor="@color/polish_ink"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="start|center_vertical"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:background="@drawable/bg_polish_field"
+    android:minHeight="44dp" />

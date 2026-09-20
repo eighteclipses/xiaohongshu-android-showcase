@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal"
+    android:background="@color/black"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/templateButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="模板"
+        android:textColor="@color/white"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/textButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="文字"
+        android:textColor="@color/white"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/albumButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="相册"
+        android:textColor="@color/white"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/captureButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="拍摄"
+        android:textColor="@color/white"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/liveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="直播"
+        android:textColor="@color/white"
+        android:gravity="center" />
+
+</LinearLayout>
+
