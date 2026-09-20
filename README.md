@@ -1,6 +1,6 @@
 # Xiaohongshu Android Showcase
 
-> 一个面向简历展示的 Android 社区应用全栈项目：Android 客户端 + Room 本地数据库 + Express REST API + MySQL/JSON 存储 + 创作者工作台 + 内容治理后台。
+> 一个 Android 社区应用全栈项目：Android 客户端 + Room 本地数据库 + Express REST API + MySQL/JSON 存储 + 创作者工作台 + 内容治理后台。
 
 <p align="center">
   <img src="docs/test-screenshots/03_home_discovery.png" alt="Android discovery feed" width="220" />
@@ -167,48 +167,6 @@ npm run start
 ```
 
 管理员账号和密码由 `.env` 控制；不要把真实密码、JWT 密钥或 AI API Key 提交到仓库。AI 笔记助手为可选功能，只有配置 `DEEPSEEK_API_KEY` 后才会启用。
-
-## 验证方式
-
-服务端测试覆盖创作者统计、创作者 Web、AI 助手、审核规则、审核接口和存储可靠性：
-
-```powershell
-npm test
-```
-
-Android 本地单元测试：
-
-```powershell
-.\gradlew.bat test
-```
-
-仓库还提供了 [测试截图目录](docs/test-screenshots/) 和 [功能对照说明](docs/FEATURES-COMPARISON.md)，方便面试时展示真实操作链路。
-
-## 适合写进简历的项目描述
-
-可以根据实际经历选用下面这段，并按你的贡献范围调整措辞：
-
-> 独立完成 Android 社区应用全栈项目，使用 Java/Kotlin + Room + Retrofit 构建支持离线回退的内容社区客户端，使用 Express + JWT + MySQL/JSON 实现账号、笔记、互动、发布和审核 API；设计发布待同步队列与媒体失败重试机制，补充创作者数据工作台和管理员内容治理后台，完成关键词初审、AI 复审建议、人工审核、举报再审和审计日志闭环。
-
-建议在简历中重点写你真正负责并能够现场讲清楚的内容，例如：
-
-1. 为什么采用 Room + 服务端双层数据，以及离线时如何避免重复发布。
-2. 图片上传失败时如何进入待同步队列，详情页打开时如何恢复。
-3. 审核状态、上下架状态、用户封禁状态为什么要分离。
-4. 钱包扣费为什么需要客户端预检和服务端最终校验。
-5. AI Key 为什么只放在服务端，客户端如何处理超时、空结果和接口异常。
-
-## 已知边界
-
-这是学习和作品展示项目，不是生产系统。以下内容已在代码和文档中明确标注：
-
-- 活动、成长、作者邀约、商品详情和支付部分是演示闭环；钱包充值是模拟支付，不会产生真实扣款。
-- 评论回复的部分层级和本地点赞数据仍主要保存在 Room，服务端接口没有完整承载全部字段。
-- `Room.allowMainThreadQueries()` 仍存在于存量代码中，后续可以通过 Repository 分层逐步移除。
-- 同城内容来自本地公开笔记流，未接入真实定位；JSON 存储适合演示，不建议作为线上多实例数据库。
-- 项目使用了社区产品的交互作为学习参考，不包含官方账号、线上数据或商业接口授权。
-
-更多实现取舍、数据流和面试讲解材料见 [项目详解](docs/PROJECT-SHOWCASE.md)。
 
 ## License
 
